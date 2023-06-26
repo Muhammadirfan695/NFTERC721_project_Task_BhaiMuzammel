@@ -72,3 +72,78 @@ function boosterDetail(address _address) external view returns (uint256[] memory
 
     return (tokenIds, boostAmounts);
 }
+//BHAI Usman code give
+// function boosterDetail(address _address) external view returns(uint256[] memory, uint256[] memory){
+//     Payment[] memory filteredSales = new Payment[](payments.length);
+//         uint256 count = 0;
+//         for (uint256 i = 0; i < payments.length; i++) {
+//             if (payments[i].owner == _address) {
+//                 filteredSales[count] = payments[i];
+//                 count++;
+//             }
+//         }
+
+//         // Create a new array with the exact length of filtered sales
+//         // Payment[] memory finalSales = new Payment[](count);
+//          uint256[] memory boostAmounts = new uint256[](count);
+//          uint256[] memory tokenIds = new uint256[](count);
+        
+//         for (uint256 i = 0; i < count; i++) {
+//             // finalSales[i] = filteredSales[i];
+//             tokenIds[i] = filteredSales[i].id;
+//             // boostAmounts[i] = filteredSales[i].boostAmount;
+
+//         }
+//             //  return finalSales; 
+//         return (tokenIds,boostAmounts);
+
+//  }
+
+function withdrawBNB(address payable recipient) external  {
+    require(address(this).balance > 0 , "Insufficient contract balance");
+    recipient.transfer(address(this).balance);
+}
+// function boosterDetail(address _address) external view returns (uint256[] memory, uint256[] memory) {
+//     uint256[] memory ids = new uint256[](payments.length);
+//     uint256[] memory boostAmounts = new uint256[](payments.length);
+//     uint256 count = 0;
+
+//     for (uint256 i = 0; i < payments.length; i++) {
+//         if (payments[i].owner == _address) {
+//             ids[count] = payments[i].id;
+//             boostAmounts[count] = payments[i].boostAmount;
+//             count++;
+//         }
+//     }
+
+//     // Trim the arrays to the correct size
+//     assembly {
+//         mstore(ids, count)
+//         mstore(boostAmounts, count)
+//     }
+
+//     return (ids, boostAmounts);
+// }
+
+
+
+// function checkDetails(address user)
+//     public
+//     view
+//     returns (uint256[] memory, uint256[] memory)
+// {
+//     uint256[] memory Ids = new uint256[](paymentIds.length);
+//     uint256[] memory boostAmounts = new uint256[](paymentIds.length);
+
+//     for (uint256 i = 0; i < paymentIds.length; i++) {
+//         uint256 tokenId = nftContract.tokenOfOwnerByIndex(user, i);
+//         Payment storage payment = accountPayments[user][tokenId];
+
+//         Ids[i] = payment.id;
+//         boostAmounts[i] = payment.boostAmount;
+//     }
+
+//     return (paymentIds, boostAmounts);
+// }
+
+}
